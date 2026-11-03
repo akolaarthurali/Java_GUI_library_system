@@ -4,12 +4,14 @@ public class Member {
     private String name;
     private String memberId;
     private String phone;
+    private int borrowedCount;
 
     //comntructor
     public Member(String name, String memberId, String phone) {
         this.name = name;
         this.memberId = memberId;
         this.phone = phone;
+        this.borrowedCount = 0;
     }
 
     //getters(allowing reading of private data by other classes)
@@ -25,6 +27,10 @@ public class Member {
         return phone;
     }
 
+    public int getBorrowedCount() {
+        return borrowedCount;
+    }
+
     //setters(allowing writing of private data by other classes)
     public void setName(String name) {
         this.name = name;
@@ -38,10 +44,21 @@ public class Member {
         this.phone = phone;
     }
 
+    // helper methods 
+    public void increamentBorrowed() {
+        borrowedCount++;
+    }
+
+    public void decreamentBorrowed() {
+        if (borrowedCount > 0) {
+            borrowedCount--;
+        }
+    }
+
     // to String method(for display in the GUI)
     // allows conversion of a member object into  a readable string
     @Override
     public String toString() {
-        return "ID: " + memberId + " | Name: " + name + " | Phone: " + phone;
+        return "ID: " + memberId + " | Name: " + name + " | Phone: " + phone + " | Books borrowed: " + borrowedCount;
     }
 }

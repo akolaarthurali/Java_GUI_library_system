@@ -1,38 +1,36 @@
 public class LibraryManager {
+
     private Book[] books;
-    private int count;
     private Member[] members;
+    private int bookCount;
     private int memberCount;
+    private int capacity;
 
+    // Constructor
     public LibraryManager(int capacity) {
-        books = new Book[capacity]; // Array of fixed size
-        members = new Member[capacity]; // Array of fixed size for members
-        count = 0;
-        memberCount = 0;
+        this.capacity = capacity;
+        this.books = new Book[capacity];
+        this.members = new Member[capacity];
+        this.bookCount = 0;
+        this.memberCount = 0;
     }
 
-    // Add a new book to the array
+    // ==================== BOOK METHODS ====================
+
     public boolean addBook(Book book) {
-        if (count < books.length) {
-            books[count] = book;
-            count++;
-            return true;
+        if (bookCount >= capacity) {
+            return false;
         }
-        return false; // Array full
+        if (findBookById(book.getBookId()) != null) {
+            return false;
+        }
+        books[bookCount] = book;
+        bookCount++;
+        return true;
     }
 
-    // Return current active books
-    public Book[] getAllBooks() {
-        Book[] currentBooks = new Book[count];
-        for (int i = 0; i < count; i++) {
-            currentBooks[i] = books[i];
-        }
-        return currentBooks;
-    }
-
-    // Search for a book by ID using a loop
-    public Book searchBookById(String bookId) {
-        for (int i = 0; i < count; i++) {
+    public Book findBookById(String bookId) {
+        for (int i = 0; i < bookCount; i++) {
             if (books[i].getBookId().equalsIgnoreCase(bookId)) {
                 return books[i];
             }
@@ -40,35 +38,115 @@ public class LibraryManager {
         return null;
     }
 
-    // Toggle borrow/return status
-    public boolean toggleBorrowStatus(String bookId) {
-        Book book = searchBookById(bookId);
-        if (book != null) {
-            book.setBorrowed(!book.isBorrowed());
-            return true;
+    public Book[] getAllBooks() {
+        Book[] result = new Book[bookCount];
+        for (int i = 0; i < bookCount; i++) {
+            result[i] = books[i];
         }
-        return false;
+        return result;
     }
 
-    //MEMBER METHODS
-    public boolean addMember(Member member) {
-        if (memberCount < members.length) {
-            members[memberCount] = member;
-            memberCount++;
-            return true;
+    public String listAvailableBooks() {
+        if (bookCount == 0) {
+            return "No books in the library.";
         }
-        return false; // Array full
+        StringBuilder sb = new StringBuilder();
+        boolean found = false;
+        for (int i = 0; i < bookCount; i++) {
+            if (!books[i].isBorrowed()) {
+                sb.append(books[i].toString()).append("\n");
+                found = true;
+            }
+        }
+        return found ? sb.toString() : "No available books at the moment.";
+    }
+
+    // ==================== MEMBER METHODS ====================
+
+    public boolean registerMember(Member member) {
+        if (memberCount >= capacity) {
+            return false;
+        }
+        if (findMemberById(member.getMemberId()) != null) {
+            return false;
+        }
+        members[memberCount] = member;
+        memberCount++;
+        return true;
+    }
+
+    public Member findMemberById(String memberId) {
+        for (int i = 0; i < memberCount; i++) {
+            if (members[i].getMemberId().equalsIgnoreCase(memberId)) {
+                return members[i];
+            }
+        }
+        return null;
     }
 
     public Member[] getAllMembers() {
-        Member[] currentMembers = new Member[memberCount];
+        Member[] result = new Member[memberCount];
         for (int i = 0; i < memberCount; i++) {
-            currentMembers[i] = members[i];
+            result[i] = members[i];
         }
-        return currentMembers;
+        return result;
     }
 
+    // ==================== BORROW & RETURN ====================
 
-    public int getCount() { return count; }
-    public int getMemberCount() { return memberCount; }
+    public String borrowBook(String bookId, String memberId) {
+        Book book = findBookById(bookId);
+        Member member = findMemberById(memberId);
+
+        if (book == null) {
+            return "Error: Book with ID " + bookId + " not found.";
+        }
+        if (member == null) {
+            return "Error: Member with ID " + memberId + " not found.";
+        }
+        if (book.isBorrowed()) {
+            return "Error: This book is already borrowed.";
+        }
+
+        book.setBorrowed(true);
+        member.incrementBorrowed();
+        return "Success: " + member.getName() + " borrowed \"" + book.getTitle() + "\".";
+    }
+
+    public String returnBook(String bookId, String memberId) {
+        Book book = findBookById(bookId);
+        Member member = findMemberById(memberId);
+
+        if (book == null) {
+            return "Error: Book with ID " + bookId + " not found.";
+        }
+        if (member == null) {
+            return "Error: Member with ID " + memberId + " not found.";
+        }
+        if (!book.isBorrowed()) {
+            return "Error: This book is not currently borrowed.";
+        }
+
+        book.setBorrowed(false);
+        member.decrementBorrowed();
+        return "Success: \"" + book.getTitle() + "\" has been returned by " + member.getName() + ".";
+    }
+
+    // Optional simple toggle (kept for compatibility)
+    public boolean toggleBorrowStatus(String bookId) {
+        Book book = findBookById(bookId);
+        if (book == null) {
+            return false;
+        }
+        book.setBorrowed(!book.isBorrowed());
+        return true;
+    }
+
+    public int getBookCount() {
+        return bookCount;
+    }
+
+    public int getMemberCount() {
+        return memberCount;
+    }
 }
