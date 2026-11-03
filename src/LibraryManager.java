@@ -1,10 +1,14 @@
 public class LibraryManager {
     private Book[] books;
     private int count;
+    private Member[] members;
+    private int memberCount;
 
     public LibraryManager(int capacity) {
         books = new Book[capacity]; // Array of fixed size
+        members = new Member[capacity]; // Array of fixed size for members
         count = 0;
+        memberCount = 0;
     }
 
     // Add a new book to the array
@@ -46,5 +50,25 @@ public class LibraryManager {
         return false;
     }
 
+    //MEMBER METHODS
+    public boolean addMember(Member member) {
+        if (memberCount < members.length) {
+            members[memberCount] = member;
+            memberCount++;
+            return true;
+        }
+        return false; // Array full
+    }
+
+    public Member[] getAllMembers() {
+        Member[] currentMembers = new Member[memberCount];
+        for (int i = 0; i < memberCount; i++) {
+            currentMembers[i] = members[i];
+        }
+        return currentMembers;
+    }
+
+
     public int getCount() { return count; }
+    public int getMemberCount() { return memberCount; }
 }
