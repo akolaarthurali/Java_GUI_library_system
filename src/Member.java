@@ -7,9 +7,9 @@ public class Member {
     private int borrowedCount;
 
     //comntructor
-    public Member(String name, String memberId, String phone) {
-        this.name = name;
+    public Member(String memberId, String name, String phone) {
         this.memberId = memberId;
+        this.name = name;
         this.phone = phone;
         this.borrowedCount = 0;
     }
@@ -45,11 +45,11 @@ public class Member {
     }
 
     // helper methods 
-    public void increamentBorrowed() {
+    public void incrementBorrowed() {
         borrowedCount++;
     }
 
-    public void decreamentBorrowed() {
+    public void decrementBorrowed() {
         if (borrowedCount > 0) {
             borrowedCount--;
         }
