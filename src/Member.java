@@ -6,7 +6,7 @@ public class Member {
     private String phone;
     private int borrowedCount;
 
-    //comntructor
+    //contructor
     public Member(String memberId, String name, String phone) {
         this.memberId = memberId;
         this.name = name;
