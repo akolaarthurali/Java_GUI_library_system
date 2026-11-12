@@ -1,5 +1,5 @@
 public class LibraryManager {
-// the variables to be used... 
+
     private Book[] books;
     private Member[] members;
     private int bookCount;
