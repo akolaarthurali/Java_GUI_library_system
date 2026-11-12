@@ -1,4 +1,4 @@
-/*Group 1 Afternoon
+/*Group 1 Afternoon 2026/27
 | Student Name                       | Registration Number |
 | :------------------------_-------------- | :------------------ |
 | AKOLA ARTHUR ALAALI       | 26/U/30158/PSA   
