@@ -1,3 +1,15 @@
+/*Group 1 Afternoon
+| Student Name                       | Registration Number |
+| :------------------------_-------------- | :------------------ |
+| AKOLA ARTHUR ALAALI       | 26/U/30158/PSA   
+| MAISHANO HALIMA MPIMA  | 26/U/01878/PS     
+| WILLIS MAK GOLD               | 26/U/03498/PSA   
+| KEMIGISHA MELLISA            | 26/U/03532/PSA    
+| JASON MUDUSU                   | 26/U/03569/PSA    
+
+
+*/
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -235,3 +247,15 @@ public class LibraryGUI extends JFrame {
         });
     }
 }
+
+/* Group 1 Afternoon
+| Student Name                       | Registration Number |
+| :------------------------_-------------- | :------------------ |
+| AKOLA ARTHUR ALAALI       | 26/U/30158/PSA   
+| MAISHANO HALIMA MPIMA  | 26/U/01878/PS     
+| WILLIS MAK GOLD               | 26/U/03498/PSA   
+| KEMIGISHA MELLISA            | 26/U/03532/PSA    
+| JASON MUDUSU                   | 26/U/03569/PSA    
+
+
+*/
