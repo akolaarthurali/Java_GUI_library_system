@@ -16,7 +16,7 @@ public class LibraryManager {
     }
 
     // ==================== BOOK METHODS ====================
-
+// 1. Addition of a book
     public boolean addBook(Book book) {
         if (bookCount >= capacity) {
             return false;
@@ -28,7 +28,7 @@ public class LibraryManager {
         bookCount++;
         return true;
     }
-
+// 2. Look for the book by ID 
     public Book findBookById(String bookId) {
         for (int i = 0; i < bookCount; i++) {
             if (books[i].getBookId().equalsIgnoreCase(bookId)) {
@@ -37,7 +37,7 @@ public class LibraryManager {
         }
         return null;
     }
-
+// 3. Go through the list of books 
     public Book[] getAllBooks() {
         Book[] result = new Book[bookCount];
         for (int i = 0; i < bookCount; i++) {
@@ -45,7 +45,7 @@ public class LibraryManager {
         }
         return result;
     }
-
+// 4. The list of books available 
     public String listAvailableBooks() {
         if (bookCount == 0) {
             return "No books in the library.";
