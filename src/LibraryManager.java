@@ -1,12 +1,12 @@
 public class LibraryManager {
-
+// the variables to be used... 
     private Book[] books;
     private Member[] members;
     private int bookCount;
     private int memberCount;
     private int capacity;
 
-    // Constructor
+    // Constructor (this)
     public LibraryManager(int capacity) {
         this.capacity = capacity;
         this.books = new Book[capacity];
