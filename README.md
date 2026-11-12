@@ -14,6 +14,18 @@ A desktop-based Java application built using **Java Swing** and **Object-Oriente
 
 ---
 
+## 👥 Group Members & Contributors
+
+| Student Name              | Registration Number |
+| :------------------------ | :------------------ |
+| **AKOLA ARTHUR ALAALI**   | `26/U/30158/PSA`    |
+| **MAISHANO HALIMA MPIMA** | `26/U/01878/PS`     |
+| **WILLIS MAK GOLD**       | `26/U/03498/PSA`    |
+| **KEMIGISHA MELLISA**     | `26/U/03532/PSA`    |
+| **JASON MUDUSU**          | `26/U/03569/PSA`    |
+
+---
+
 ## 🏛️ Project Architecture & OOP Structure
 
 The application follows a modular **Model-View-Controller (MVC)** architecture consisting of 4 core Java classes:
@@ -76,8 +88,3 @@ LibraryManagementSystem/
 
 - **Course Title**: CSC 1102 - Structured Programming & Object-Oriented Programming
 - **Project Type**: Practical Group Exam Assignment
-- **Group Members**: AKOLA ARTHUR ALAALI 26/U/30158/PSA
--     				                    MAISHANO HALIMA MPIMA	  26/U/01878/PS
--     				                    WILLIS MAK GOLD		             26/U/03498/PSA
--     				                    KEMIGISHA MELLISA		       26/U/03532/PSA
--     				                    JASON MUDUSU			         26/U/03569/PSA
